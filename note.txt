@@ -1,0 +1,31 @@
+HTTP
+http -> aturam main
+http request (dari client)
+http response (dari server)
+
+man in the middle ga bisa intercept password (udah dienkripsi) meskipun pas post ngirimnya biasa (ga dienkripsi)
+
+API
+Sebuah interface yang dapat menghubungkan aplikasi satu dengan aplikasi lainnya. Jadi, API berperan sebagai perantara antar berbagai aplikasi berbeda, baik dalam satu platform yang sama atau lintas platform
+
+1. Public API : sering disebut Open API. Contohnya, API untuk Google Maps dan API untuk data Covid Indonesia
+2. Private API : API jenis ini dibuat untuk keperluan internal dalam pengembangan aplikasi tertentu. Misalnya, API dari back end yang digunakan untuk mengakses front end dari sebuah website. Atau, aplikasi untuk pengembangan aplikasi mobile.
+3. Partner API : bisa digunakan untuk kepentingan umum tapi sebatas pihak yang sudah memiliki izin penggunaannya.
+4. Composite API : API yang menyimpan data dari berbagai server atau hosting dalam satu tempat.
+
+API
+punya endpoint
+punya fungsinya
+
+summary
+http method
+http response
+port default 8080
+
+- Initialize Gin Gonic terdapat dua cara, yaitu dengan method gin.Default() atau gin.New()
+- gin.Default akan membuat router yang dipasang Recovery Middleware dan Logger secara default
+- [gin.New](http://gin.New) method akan membuat router tanpa middleware sama sekali
+- Middleware merupakan service perantara yang menjalankan sebuah function atau method
+- method router.Run() menjalankan aplikasi gin gonic yang dapat menerima request dari Client
+- Kita dapat menentukan port dengan memasukan port pada parameter router.run() contoh: router.run(”:8181”)
+- Secara default jika kita tidak define port pada router kita, secara defualt port nya adalah 8080
