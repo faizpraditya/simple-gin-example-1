@@ -3,6 +3,22 @@ http -> aturam main
 http request (dari client)
 http response (dari server)
 
+- HTTP Statuscode memberikan jenis repsonse yang terdiri dari 3 digit dan dikelompokkan berdasarkan digit pertama
+    - 1XX → Informational
+    - 2XX → Success
+    - 3XX → Redirection
+    - 4XX → Client Error
+    - 5XX → Server Error
+
+### HTTP Method
+
+- HTTP Method untuk mengirim sebuah request ada 5 jenis
+    - GET → Read Data
+    - POST → Insert Data
+    - PUT → Update/Replace Data
+    - DELETE → Remove Data
+    - PATCH →Update/Modify Data
+
 man in the middle ga bisa intercept password (udah dienkripsi) meskipun pas post ngirimnya biasa (ga dienkripsi)
 
 API
@@ -22,6 +38,9 @@ http method
 http response
 port default 8080
 
+GIN Gonic
+$ go get -u github.com/gin-gonic/gin
+
 - Initialize Gin Gonic terdapat dua cara, yaitu dengan method gin.Default() atau gin.New()
 - gin.Default akan membuat router yang dipasang Recovery Middleware dan Logger secara default
 - [gin.New](http://gin.New) method akan membuat router tanpa middleware sama sekali
@@ -29,3 +48,38 @@ port default 8080
 - method router.Run() menjalankan aplikasi gin gonic yang dapat menerima request dari Client
 - Kita dapat menentukan port dengan memasukan port pada parameter router.run() contoh: router.run(”:8181”)
 - Secara default jika kita tidak define port pada router kita, secara defualt port nya adalah 8080
+
+// Selasa
+middleware
+router.Use(gin.Logger())
+custom
+router.Use(gin.LoggerWithFormatter(func(params gin.LogFormatterParams) string {
+		return fmt.Sprintf("%s %s", params.Path, params.Method)
+	}))
+
+
+// summary
+by default, setmode(debugmode)
+scope
+-router.NoRoute
+client.route.Group
+connection db tidak disarankan di global variable
+
+// catatan tambahan
+shouldbindjson/bindjson
+bind json-> must bind, langsung ngeluarin error 400
+shouldbind bisa manage error sendiri
+gin.H -> H is a shortcut for map[string]interface{}
+type H map[string]interface{}
+
+
+NGINX
+server {
+listen 80;
+location /api {
+rewrite /api/(.*) /$1 break;
+proxy_pass http://localhost:8181;
+}
+} 
+
+sudo systemctl stop apache2
